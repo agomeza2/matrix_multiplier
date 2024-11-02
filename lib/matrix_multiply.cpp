@@ -90,9 +90,16 @@ void printSizes(){
 } 
 
 std::vector<T> actual_multiply(){
+    int count=0;
+    T sum;
     #pragma omp parallel for 
     for(int i=0; i<duply_a.size(); i++){
-        result.push_back(duply_a[i]*duply_b[i]);
+        sum+=duply_a[i]*duply_b[i]
+        count++;
+        if(count == this->A.get_N()){
+            result.push_back(duply_a[i]*duply_b[i]);
+            count=0;
+        }
     } 
     return result;
 } 
